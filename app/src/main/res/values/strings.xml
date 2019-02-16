@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Lazada</string>
+    <string name="title_splash_0">Thế giới mua sắm trong tầm tay bạn</string>
+    <string name="title_splash_1">Giao hàng tận nơi + thanh toán dễ dàng</string>
+    <string name="title_splash_2">100% bảo vệ người tiêu dùng</string>
+    <string name="hint_search">Tìm kiếm trên Lazada</string>
+    <string name="title_gio_hang">Giỏ hàng</string>
+    <string name="title_more">Thêm</string>
+    <string name="title_login">Đăng nhập</string>
+    <string name="title_noti">Thông báo</string>
+    <string name="title_favorite">Danh sách mong muốn</string>
+    <string name="title_order_list">Đơn hàng của tôi</string>
+    <string name="title_settings">Cài đặt</string>
+    <string name="title_privacy">Chính sách</string>
+    <string name="title_help">Trợ giúp</string>
+    <string name="title_open">Mở</string>
+    <string name="title_close">Đống</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
