@@ -12,17 +12,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DownloadJSON extends AsyncTask<String, Void, String> {
+    public static final String BASE_URL = "http://10.0.3.2/";
+    public static final String LOAISANPHAM_URL = "http://10.0.3.2/weblazada/loaisanpham0.php?maloaicha=";
     @Override
     protected String doInBackground(String... strings) {
+        StringBuilder result = new StringBuilder();
+        String link = strings[0];
         try {
-            URL url = new URL("http://localhost/weblazada/loaisanpham0.php?maloaicha=0");
+            URL url = new URL(link);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             InputStream is = connection.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader bReader = new BufferedReader(isr);
             String line = "";
             while ((line = bReader.readLine()) != null){
-                Log.i("LINE", line);
+                result.append(line);
             }
             bReader.close();
             isr.close();
@@ -32,7 +36,7 @@ public class DownloadJSON extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return result.toString();
     }
 
     @Override

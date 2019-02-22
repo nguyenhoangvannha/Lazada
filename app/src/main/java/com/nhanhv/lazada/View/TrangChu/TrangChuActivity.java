@@ -1,5 +1,6 @@
 package com.nhanhv.lazada.View.TrangChu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -8,21 +9,33 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
 
+import com.nhanhv.lazada.Adapter.ExpandableMenuAdapter;
 import com.nhanhv.lazada.Adapter.TrangChuAdapter;
+import com.nhanhv.lazada.Model.entity.LoaiSanPham;
+import com.nhanhv.lazada.Presenter.trangchu.TrangChuPresenter;
 import com.nhanhv.lazada.R;
-import com.nhanhv.lazada.Rest.DownloadJSON;
 
-public class TrangChuActivity extends AppCompatActivity {
+import java.util.List;
+
+public class TrangChuActivity extends AppCompatActivity implements TrangChuView{
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     TabLayout tabBar;
     ViewPager pagerTrangChu;
     TrangChuAdapter trangChuAdapter;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    TrangChuPresenter trangChuPresenter;
+    ExpandableListView expandableMenu;
+    ExpandableMenuAdapter menuAdapter;
+    Button buttonSearch;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +48,24 @@ public class TrangChuActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         tabBar = findViewById(R.id.tabBar);
         pagerTrangChu = findViewById(R.id.pagerTrangChu);
+        expandableMenu = findViewById(R.id.expandedMenu);
+        buttonSearch = findViewById(R.id.buttonSearch);
+
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.title_open, R.string.title_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         actionBarDrawerToggle.syncState();
+
         trangChuAdapter = new TrangChuAdapter(getSupportFragmentManager());
         pagerTrangChu.setAdapter(trangChuAdapter);
         tabBar.setupWithViewPager(pagerTrangChu);
 
-        DownloadJSON downloadJSON = new DownloadJSON();
-        downloadJSON.execute("");
+
+        trangChuPresenter = new TrangChuPresenter(this);
+        trangChuPresenter.loadListLSP(0);
     }
 
     @Override
@@ -61,5 +80,19 @@ public class TrangChuActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showListLSP(List<LoaiSanPham> loaiSanPhams) {
+        Log.i("DSLOAISP", loaiSanPhams.toString());
+        menuAdapter = new ExpandableMenuAdapter(this, loaiSanPhams);
+        expandableMenu.setAdapter(menuAdapter);
+        menuAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showErrorLoadLSP(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Log.i("DSLOAISP", msg);
     }
 }
