@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.dangnhap.DangNhapActivity"></activity>
         <activity
-            android:name=".View.ManHinhChao.ManHinhChaoActivity"
+            android:name=".view.manhinhchao.ManHinhChaoActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.TrangChu.TrangChuActivity"
+            android:name=".view.trangchu.TrangChuActivity"
             android:label=""
             android:screenOrientation="userPortrait" />
     </application>

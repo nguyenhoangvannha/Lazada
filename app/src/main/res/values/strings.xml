@@ -7,6 +7,8 @@
     <string name="title_gio_hang">Giỏ hàng</string>
     <string name="title_more">Thêm</string>
     <string name="title_login">Đăng nhập</string>
+    <string name="title_login_reg">Đăng nhập / Đăng ký</string>
+    <string name="title_reg">Đăng ký</string>
     <string name="title_noti">Thông báo</string>
     <string name="title_favorite">Danh sách mong muốn</string>
     <string name="title_order_list">Đơn hàng của tôi</string>
@@ -15,6 +17,12 @@
     <string name="title_help">Trợ giúp</string>
     <string name="title_open">Mở</string>
     <string name="title_close">Đống</string>
+    <string name="title_facebook">Facebook</string>
+    <string name="title_google">Google</string>
+    <string name="title_alternative_login">Hoặc đăng nhập bằng</string>
+    <string name="title_forget_password">Quên mật khẩu?</string>
+    <string name="hint_email">Địa chỉ email</string>
+    <string name="hint_password">Mật khẩu</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

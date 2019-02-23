@@ -12,7 +12,7 @@
         app:showAsAction="always">
         <menu>
             <item
-                android:id="@+id/idLogin"
+                android:id="@+id/itLogin"
                 android:icon="@drawable/ic_sentiment_satisfied_black_24dp"
                 android:title="@string/title_login"/>
             <item

@@ -2,11 +2,13 @@
 <resources>
     <color name="colorPrimary">#142C3F</color>
     <color name="colorPrimaryDark">#142C3F</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#F36E21</color>
     <color name="colorLazadaOrange">#F36E21</color>
     <color name="color_black">#000000</color>
     <color name="color_white">#FFFFFF</color>
     <color name="color_toolbar">#142C3F</color>
+    <color name="color_facebook">#3B5998</color>
+    <color name="color_google">#DB4437</color>
 
     <color name="material_text_color_black_divider">#1f000000</color>
     <color name="material_text_color_black_hint">#42000000</color>

@@ -14,4 +14,7 @@
     <style name="AppTheme.TextNormal" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
     </style>
+    <declare-styleable name="PasswordEdittext">
+        <attr name="passwordToggle" format="boolean"/>
+    </declare-styleable>
 </resources>
