@@ -1,5 +1,7 @@
 package com.nhanhv.lazada.model.trangChu;
 
+import android.util.Pair;
+
 import com.nhanhv.lazada.model.entity.LoaiSanPham;
 import com.nhanhv.lazada.rest.DownloadJSON;
 
@@ -22,8 +24,11 @@ public class LoadLoaiSanPham {
     }
 
     public List<LoaiSanPham> loadListLSP(int maLoaiCha){
-        DownloadJSON downloadJSON = new DownloadJSON();
-        downloadJSON.execute(DownloadJSON.LOAISANPHAM_URL + maLoaiCha);
+        ArrayList<Pair<String, String>> attrs = new ArrayList<>();
+        attrs.add(new Pair<String, String>("maloaicha", "" + maLoaiCha));
+        attrs.add(new Pair<String, String>("ham", "LayDanhSachMenu"));
+        DownloadJSON downloadJSON = new DownloadJSON(attrs, DownloadJSON.METHOD_POST);
+        downloadJSON.execute(DownloadJSON.BASE_URL);
         try {
             String jsonData = downloadJSON.get();
             List<LoaiSanPham> loaiSanPhams = new ArrayList<>();
@@ -52,8 +57,11 @@ public class LoadLoaiSanPham {
         return null;
     }
     public List<LoaiSanPham> loadListLSPCon(int maLoaiCha){
-        DownloadJSON downloadJSON = new DownloadJSON();
-        downloadJSON.execute(DownloadJSON.LOAISANPHAM_URL + maLoaiCha);
+        ArrayList<Pair<String, String>> attrs = new ArrayList<>();
+        attrs.add(new Pair<String, String>("maloaicha", "" + maLoaiCha));
+        attrs.add(new Pair<String, String>("ham", "LayDanhSachMenu"));
+        DownloadJSON downloadJSON = new DownloadJSON(attrs, DownloadJSON.METHOD_POST);
+        downloadJSON.execute(DownloadJSON.BASE_URL);
         List<LoaiSanPham> loaiSanPhams = new ArrayList<>();
         try {
             String jsonData = downloadJSON.get();

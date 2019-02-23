@@ -16,5 +16,6 @@
     </style>
     <declare-styleable name="PasswordEdittext">
         <attr name="passwordToggle" format="boolean"/>
+        <attr name="errorEnable" format="boolean"/>
     </declare-styleable>
 </resources>

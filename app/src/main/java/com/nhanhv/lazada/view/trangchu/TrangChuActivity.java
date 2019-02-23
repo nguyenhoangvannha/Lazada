@@ -3,7 +3,10 @@ package com.nhanhv.lazada.view.trangchu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,8 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.nhanhv.lazada.adapter.ExpandableMenuAdapter;
@@ -25,7 +30,7 @@ import com.nhanhv.lazada.view.dangnhap.DangNhapActivity;
 
 import java.util.List;
 
-public class TrangChuActivity extends AppCompatActivity implements TrangChuView{
+public class TrangChuActivity extends AppCompatActivity implements TrangChuView, AppBarLayout.OnOffsetChangedListener {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     TabLayout tabBar;
@@ -36,6 +41,8 @@ public class TrangChuActivity extends AppCompatActivity implements TrangChuView{
     ExpandableListView expandableMenu;
     ExpandableMenuAdapter menuAdapter;
     Button buttonSearch;
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    AppBarLayout appBarLayout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +57,8 @@ public class TrangChuActivity extends AppCompatActivity implements TrangChuView{
         pagerTrangChu = findViewById(R.id.pagerTrangChu);
         expandableMenu = findViewById(R.id.expandedMenu);
         buttonSearch = findViewById(R.id.buttonSearch);
+        collapsingToolbarLayout = findViewById(R.id.collapsingToolbar);
+        appBarLayout = findViewById(R.id.appBar);
 
         setSupportActionBar(toolbar);
 
@@ -66,6 +75,8 @@ public class TrangChuActivity extends AppCompatActivity implements TrangChuView{
 
         trangChuPresenter = new TrangChuPresenter(this);
         trangChuPresenter.loadListLSP(0);
+
+        appBarLayout.addOnOffsetChangedListener(this);
     }
 
     @Override
@@ -100,5 +111,15 @@ public class TrangChuActivity extends AppCompatActivity implements TrangChuView{
     public void showErrorLoadLSP(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         Log.i("DSLOAISP", msg);
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+        LinearLayout linearLayout = appBarLayout.findViewById(R.id.linearSearch);
+        if (collapsingToolbarLayout.getHeight() + i <= 1.5 * ViewCompat.getMinimumHeight(collapsingToolbarLayout)){
+            linearLayout.animate().alpha(0).setDuration(200);
+        } else {
+            linearLayout.animate().alpha(1).setDuration(200);
+        }
     }
 }
